@@ -1,21 +1,15 @@
 package com.mycompany.app;
 
 public class PieceDogR extends Tetris{
-
-    private string pocisiones[];
+    private String posiciones[];
     
     public PieceDogR(){
             super("oooo oooo oxxo xxoo");
     }
 
     public void movimientos(){
-        pocisiones[0]= "oooooooooxxoxxoo";
-        pocisiones[1]= "oooooxooxxooxooo";
-
-
-
-
-
+        posiciones[0]= "oooooooooxxoxxoo";
+        posiciones[1]= "oooooxooxxooxooo";
     }
 
 }
