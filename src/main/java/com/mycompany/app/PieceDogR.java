@@ -9,8 +9,8 @@ public class PieceDogR extends Tetris{
     }
 
     public void movimientos(){
-        pocisiones[0]= "oooooooooxxoxxoo"
-        pocisiones[1]= "oooooxooxxooxooo"
+        pocisiones[0]= "oooooooooxxoxxoo";
+        pocisiones[1]= "oooooxooxxooxooo";
 
 
 
