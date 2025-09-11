@@ -5,12 +5,12 @@ public class PieceStick extends Tetris{
 
 
     public PieceStick(){
-        super("xoooxoooxoooxooo");
+        super("oxoooxoooxoooxoo");
     }
 
    public void movimientos(){
-        posiciones[0] = "xoooxoooxoooxooo";
-        posiciones[1] = "oxoooxoooxoooxoo";
+        posiciones[0] = "oxoooxoooxoooxoo";
+        posiciones[1] = "xxxxoooooooooooo";
    }
 
 }
