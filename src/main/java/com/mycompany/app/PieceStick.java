@@ -5,7 +5,7 @@ public class PieceStick extends Tetris{
 
 
     public PieceStick(){
-        super("oxoooxoooxoooxoo");
+        super("oxoooxoooxoooxoo", "Stick");
     }
 
    public void movimientos(){

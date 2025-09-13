@@ -4,7 +4,7 @@ public class PieceLL extends Tetris{
     private String posiciones[];
 
     public PieceLL(){
-        super("oooooxoooxooxxoo");
+        super("oooooxoooxooxxoo", "LL");
     }
 
 

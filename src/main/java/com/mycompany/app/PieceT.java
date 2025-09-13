@@ -4,7 +4,7 @@ public class PieceT extends Tetris{
     private String posiciones[];
     
     public PieceT(){
-        super("oooooxooxxxooooo");
+        super("oooooxooxxxooooo", "T");
     }
 
     public void movimientos(){

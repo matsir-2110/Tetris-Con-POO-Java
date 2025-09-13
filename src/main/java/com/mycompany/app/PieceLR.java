@@ -4,7 +4,7 @@ public class PieceLR extends Tetris{
     private String posiciones[];
 
     public PieceLR() {
-        super("ooooxoooxoooxxoo");
+        super("ooooxoooxoooxxoo", "LR");
     }
 
     public void movimientos(){

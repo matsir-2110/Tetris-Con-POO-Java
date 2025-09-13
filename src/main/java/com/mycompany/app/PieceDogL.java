@@ -4,12 +4,13 @@ public class PieceDogL extends Tetris {
     private String posiciones[];
 
     public PieceDogL() {
-        super("ooooooooxxoooxxo");
+        super("ooooooooxxoooxxo", "DogL");
     }
 
     public void movimientos(){
         posiciones[0] = "ooooooooxxoooxxo";
         posiciones[1] = "oooooxooxxooxooo";
     }
+    
     
 }

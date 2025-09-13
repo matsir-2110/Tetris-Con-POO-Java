@@ -4,7 +4,7 @@ public class PieceDogR extends Tetris{
     private String posiciones[];
     
     public PieceDogR(){
-            super("oooo oooo oxxo xxoo");
+            super("oooooooooxxoxxoo", "DogR");
     }
 
     public void movimientos(){
