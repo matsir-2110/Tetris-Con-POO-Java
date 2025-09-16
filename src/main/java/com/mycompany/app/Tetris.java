@@ -1,6 +1,6 @@
 package com.mycompany.app;
     
-public class Tetris {
+public abstract class Tetris {
     private String forma;
     private String nombre;
 
@@ -24,4 +24,8 @@ public class Tetris {
     public String getNombre() {
         return nombre;
     }
+
+    public abstract void rotarIzquierda();
+    public abstract void rotarDerecha();
+
 }
