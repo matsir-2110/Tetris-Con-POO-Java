@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceActual {
+public  class PieceActual {
     private Tetris piece;
     private int fila;
     private int columna;

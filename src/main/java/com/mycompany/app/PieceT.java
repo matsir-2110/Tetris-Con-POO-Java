@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceT extends Tetris{
+public abstract class PieceT extends Tetris{
     private String posiciones[];
     
     public PieceT(){

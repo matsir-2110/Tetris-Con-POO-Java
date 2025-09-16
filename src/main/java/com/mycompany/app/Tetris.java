@@ -27,6 +27,6 @@ public abstract class Tetris {
 
     public abstract void rotarIzquierda();
     public abstract void rotarDerecha();
-    public abstract string getPosicionActual();
+    public abstract String getPosicionActual();
 
 }

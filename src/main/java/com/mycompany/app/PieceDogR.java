@@ -7,14 +7,14 @@ public class PieceDogR extends Tetris{
     public PieceDogR(){
             super("oooooooooxxoxxoo", "DogR");
 
-        posiciones = new string [2];
+        posiciones = new String [2];
 
         posiciones[0]= "oooooooooxxoxxoo";
         posiciones[1]= "xoooxxoooxoooooo";
     }
 
     @Override
-    public string getPosicionActual() {
+    public String getPosicionActual() {
         return posiciones[rotacionActual];
     }
 
@@ -22,6 +22,7 @@ public class PieceDogR extends Tetris{
     public void rotarIzquierda(){
         rotacionActual = (rotacionActual -1 + posiciones.length) % posiciones.length;
     }
+        
 
     @Override
     public void rotarDerecha(){

@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceSquare extends Tetris{
+public abstract class PieceSquare extends Tetris{
     
     public PieceSquare(){
         super("ooooooooxxooxxoo", "Square");
