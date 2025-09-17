@@ -21,6 +21,7 @@ public class PieceStick extends Tetris{
         rotacionActual = (rotacionActual + 1) % posiciones.length;
     }
 
+    @Override
     public void rotarDerecha() {
         rotacionActual = (rotacionActual + 1) % posiciones.length;
     }
