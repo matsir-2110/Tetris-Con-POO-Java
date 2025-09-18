@@ -10,14 +10,26 @@ public class PieceStickTest {
         PieceStick ST = new PieceStick();
 
         // FORMA INICIAL
-        assertEquals("oxoooxoooxoooxoo", ST.getPosicionActual());
+        assertEquals("oxoo\n"+
+                     "oxoo\n"+
+                     "oxoo\n"+
+                     "oxoo", 
+                     ST.getPosicionActual());
 
         ST.rotarDerecha();
 
-        assertEquals("xxxxoooooooooooo", ST.getPosicionActual());
+        assertEquals("xxxx\n"+
+                     "oooo\n"+
+                     "oooo\n"+
+                     "oooo", 
+                     ST.getPosicionActual());
 
         ST.rotarIzquierda();
-        assertEquals("oxoooxoooxoooxoo", ST.getPosicionActual());
+        assertEquals("oxoo\n"+
+                     "oxoo\n"+
+                     "oxoo\n"+
+                     "oxoo", 
+                     ST.getPosicionActual());
     }
 
     
