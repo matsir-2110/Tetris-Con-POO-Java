@@ -10,13 +10,28 @@ public class PieceDogTest {
     public void RotaBienDogL() {
         PieceDogL DL = new PieceDogL();
         // FORMA INICIAL
-        assertEquals("ooooooooxxoooxxo", DL.getPosicionActual());
+        assertEquals(
+            "oooo\n" +
+            "oooo\n" +
+            "xxoo\n" +
+            "oxxo", 
+            DL.getPosicionActual());
 
         DL.rotarDerecha();
-        assertEquals("oxooxxooxooooooo", DL.getPosicionActual());
+        assertEquals(
+            "oxoo\n" +
+            "xxoo\n" +
+            "xooo\n" +
+            "oooo",
+             DL.getPosicionActual());
 
         DL.rotarIzquierda();
-        assertEquals("ooooooooxxoooxxo", DL.getPosicionActual());
+        assertEquals( 
+            "oooo\n" +
+            "oooo\n" +
+            "xxoo\n" +
+            "oxxo", 
+            DL.getPosicionActual());
 
        
     }
@@ -25,13 +40,28 @@ public class PieceDogTest {
     public void RotaBienDogR() {
         PieceDogR DR = new PieceDogR();
         // FORMA INICIAL
-        assertEquals ("oooooooooxxoxxoo", DR.getPosicionActual());
+        assertEquals ( 
+            "oooo\n" +
+            "oooo\n" +
+            "oxxo\n" +
+            "xxoo", 
+            DR.getPosicionActual());
     
         DR.rotarDerecha();
-        assertEquals("xoooxxoooxoooooo", DR.getPosicionActual());
+        assertEquals(
+            "xooo\n" +
+            "xxoo\n" +
+            "oxoo\n" +
+            "oooo", 
+            DR.getPosicionActual());
 
         DR.rotarIzquierda();
-        assertEquals("oooooooooxxoxxoo", DR.getPosicionActual());
+        assertEquals( 
+            "oooo\n" +
+            "oooo\n" +
+            "oxxo\n" +
+            "xxoo", 
+             DR.getPosicionActual());
     }
 
 }
