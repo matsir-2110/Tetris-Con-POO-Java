@@ -6,6 +6,14 @@ public class PieceSquare extends Tetris{
 
     public PieceSquare(){
         super("ooooooooxxooxxoo", "Square");
+
+        posiciones = new String[1];
+        
+        posiciones[0] =
+            "oooo\n" +
+            "oooo\n" +
+            "xxoo\n" +
+            "xxoo";
     }
 
     @Override

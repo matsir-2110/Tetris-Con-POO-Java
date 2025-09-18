@@ -1,7 +1,7 @@
 package com.mycompany.app;
 
 public class PieceDogR extends Tetris{
-    private final String [] posiciones;
+    private final String  posiciones[];
     private int rotacionActual = 0;
 
     public PieceDogR(){
@@ -9,9 +9,17 @@ public class PieceDogR extends Tetris{
 
         posiciones = new String [2];
 
-        posiciones[0]= "oooooooooxxoxxoo";
-        posiciones[1]= "xoooxxoooxoooooo";
-    }
+        posiciones[0]= 
+            "oooo\n" +
+            "oooo\n" +
+            "oxxo\n" +
+            "xxoo";
+        posiciones[1]= 
+            "xooo\n" +
+            "xxoo\n" +
+            "oxoo\n" +
+            "oooo";
+        }
 
     @Override
     public String getPosicionActual() {
@@ -22,7 +30,6 @@ public class PieceDogR extends Tetris{
     public void rotarIzquierda(){
         rotacionActual = (rotacionActual -1 + posiciones.length) % posiciones.length;
     }
-        
 
     @Override
     public void rotarDerecha(){
