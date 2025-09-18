@@ -5,14 +5,26 @@ public class PieceLL extends Tetris{
     private int rotacionActual = 0;
 
     public PieceLL(){
-        super("oooooxoooxooxxoo", "LL");
+        super("oooo\n" + "oxoo\n" + "oxoo\n" + "xxoo", "LL");
 
         posiciones = new String [4];
 
-        posiciones[0] = "oooooxoooxooxxoo";
-        posiciones[1] = "xoooxxxooooooooo";
-        posiciones[2] = "ooxxooxoooxooooo";
-        posiciones[3] = "oooooooooxxxooox";
+        posiciones[0] = "oooo\n"+
+                        "oxoo\n"+
+                        "oxoo\n"+
+                        "xxoo";
+        posiciones[1] = "xooo\n"+
+                        "xxxo\n"+
+                        "oooo\n"+
+                        "oooo";
+        posiciones[2] = "ooxx\n"+
+                        "ooxo\n"+
+                        "ooxo\n"+
+                        "oooo";
+        posiciones[3] = "oooo\n"+
+                        "oooo\n"+
+                        "oxxx\n"+
+                        "ooox";
 
     }
 

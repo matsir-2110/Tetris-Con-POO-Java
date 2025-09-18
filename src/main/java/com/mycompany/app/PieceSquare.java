@@ -5,7 +5,7 @@ public class PieceSquare extends Tetris{
     private int rotacionActual = 0;
 
     public PieceSquare(){
-        super("ooooooooxxooxxoo", "Square");
+        super("oooo\n" + "oooo\n" + "xxoo\n" + "xxoo", "Square");
 
         posiciones = new String[1];
         
