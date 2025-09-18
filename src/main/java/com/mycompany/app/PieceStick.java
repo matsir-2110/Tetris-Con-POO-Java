@@ -5,10 +5,17 @@ public class PieceStick extends Tetris{
     
 
     public PieceStick(){
-        super("oxoooxoooxoooxoo", "Stick");
+        super("oxoo\n" + "oxoo\n" + "oxoo\n" + "oxoo", "Stick");
+        
         posiciones = new String[2]; 
-        posiciones[0] = "oxoooxoooxoooxoo";
-        posiciones[1] = "xxxxoooooooooooo";
+        posiciones[0] = "oxoo\n"+
+                        "oxoo\n"+
+                        "oxoo\n"+
+                        "oxoo";
+        posiciones[1] = "xxxx\n"+
+                        "oooo\n"+
+                        "oooo\n"+
+                        "oooo";
     }
 
     private int rotacionActual = 0;

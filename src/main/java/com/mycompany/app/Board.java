@@ -1,19 +1,20 @@
 package com.mycompany.app;
 
 public class Board {
-    private String[][] tablero;
+    private char[][] tablero;
+    public int length;
 
     public Board() {
-        tablero = new String[20][10];
+        tablero = new char[10][20];
 
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 10; j++) {
-                tablero[i][j] = "o";
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 20; j++) {
+                tablero[i][j] = 'o';
             }
         }
     }
 
-    public String[][] getTablero() {
+    public char[][] getTablero() {
         return tablero;
     }
 

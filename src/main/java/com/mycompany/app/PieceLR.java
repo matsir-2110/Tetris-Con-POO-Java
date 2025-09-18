@@ -6,13 +6,25 @@ public class PieceLR extends Tetris{
 
 
     public PieceLR() {
-        super("ooooxoooxoooxxoo", "LR");
+        super("oooo\n" + "xooo\n" + "xooo\n" + "xxoo", "LR");
         posiciones = new String [4];
 
-        posiciones[0] = "ooooxoooxoooxxoo";
-        posiciones[1] = "xxxoxooooooooooo";
-        posiciones[2] = "ooxxoooxoooxoooo";
-        posiciones[3] = "oooooooooooxoxxx";
+        posiciones[0] = "oooo\n"+
+                        "xooo\n"+
+                        "xooo\n"+
+                        "xxoo";
+        posiciones[1] = "xxxo\n"+
+                        "xooo\n"+
+                        "oooo\n"+
+                        "oooo";
+        posiciones[2] = "ooxx\n"+
+                        "ooox\n"+
+                        "ooox\n"+
+                        "oooo";
+        posiciones[3] = "oooo\n"+
+                        "oooo\n"+
+                        "ooox\n"+
+                        "oxxx";
 
     }
 

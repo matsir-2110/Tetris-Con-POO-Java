@@ -5,7 +5,7 @@ public class PieceDogR extends Tetris{
     private int rotacionActual = 0;
 
     public PieceDogR(){
-            super("oooooooooxxoxxoo", "DogR");
+            super("oooo\n" + "oooo\n" + "oxxo\n" + "xxoo", "DogR");
 
         posiciones = new String [2];
 

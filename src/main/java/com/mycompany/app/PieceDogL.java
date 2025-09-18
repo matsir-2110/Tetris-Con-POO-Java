@@ -7,7 +7,7 @@ public class PieceDogL extends Tetris  {
     
     public PieceDogL() {
 
-        super("ooooooooxxoooxxo", "DogL");
+        super("oooo\n" + "oooo\n" + "xxoo\n" + "oxxo", "DogL");
 
         posiciones = new String [2];
 

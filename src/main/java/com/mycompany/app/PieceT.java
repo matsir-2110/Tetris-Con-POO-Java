@@ -5,14 +5,26 @@ public class PieceT extends Tetris{
     private int rotacionActual = 0;
     
     public PieceT(){
-        super("oooooxooxxxooooo", "T");
+        super("oooo\n" + "oxoo\n" + "xxxo\n" + "oooo", "T");
     }
 
     public void movimientos(){
-        posiciones[0] = "oooooxooxxxooooo";
-        posiciones[1] = "ooooxoooxxooxooo";
-        posiciones[2] = "ooooxxxooxoooooo";
-        posiciones[3] = "oooooxooxxoooxoo";
+        posiciones[0] = "oooo\n"+
+                        "oxoo\n"+
+                        "xxxo\n"+
+                        "oooo";
+        posiciones[1] = "oooo\n"+
+                        "xooo\n"+
+                        "xxoo\n"+
+                        "xooo";
+        posiciones[2] = "oooo\n"+
+                        "xxxo\n"+
+                        "oxoo\n"+
+                        "oooo";
+        posiciones[3] = "oooo\n"+
+                        "oxoo\n"+
+                        "xxoo\n"+
+                        "oxoo";
    }
 
    @Override

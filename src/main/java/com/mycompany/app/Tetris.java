@@ -6,10 +6,15 @@ import java.util.List;
 public abstract class Tetris {
     private String forma;
     private String nombre;
+    private int fila;
+    private int col;
+    private Board tablero;
 
     public Tetris(String formaInicial, String nombreP){
         setForma(formaInicial);
         setNombre(nombreP);
+        setFila(0);
+        setColumna(4);
     }
 
     public void setForma(String forma){
@@ -28,23 +33,54 @@ public abstract class Tetris {
         return nombre;
     }
 
-    public abstract void rotarIzquierda();
-    public abstract void rotarDerecha();
-    public abstract String getPosicionActual();
+    public int getFila(){
+        return fila;
+    }
+    
+    public void setFila(int fila){
+        this.fila = fila;
+    }
 
-    public List<int[]> getCeldasOcupadas(int x, int y) {
-        String m = getPosicionActual();   // String de 16 chars
-        List<int[]> celdas = new ArrayList<>(); // cada celda: [columna, fila]
+    public int getColumna(){
+        return col;
+    }
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                char c = m.charAt(i * 4 + j);
-                if (c == 'x') {
-                    celdas.add(new int[] {x + j, y + i});
+    public void setColumna(int col){
+        this.col = col;
+    }
+
+    public void bajar(){
+        fila++;
+    }
+
+    public void dibujarEnTablero() {
+            char[][] tab = tablero.getTablero();
+            String[] filasPieza = getPosicionActual().split("\n");
+
+            for (int i = 0; i < filasPieza.length; i++) {
+                for (int j = 0; j < filasPieza[i].length(); j++) {
+                    if (filasPieza[i].charAt(j) == 'x') {
+                        tab[fila + i][col + j] = 'x';
+                    }
                 }
             }
         }
-        return celdas;
+
+    // borrar (antes de mover)
+    public void borrarDelTablero() {
+        char[][] tab = tablero.getTablero();
+        String[] filasPieza = getPosicionActual().split("\n");
+
+        for (int i = 0; i < filasPieza.length; i++) {
+            for (int j = 0; j < filasPieza[i].length(); j++) {
+                if (filasPieza[i].charAt(j) == 'x') {
+                    tab[fila + i][col + j] = 'o';
+                }
+            }
+        }
     }
 
+    public abstract void rotarIzquierda();
+    public abstract void rotarDerecha();
+    public abstract String getPosicionActual();
 }
