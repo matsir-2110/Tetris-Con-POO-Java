@@ -22,7 +22,7 @@ public class PieceT extends Tetris{
 
     @Override
     public void rotarIzquierda() {
-        rotacionActual = (rotacionActual + 1) % posiciones.length;
+        rotacionActual = (rotacionActual - 1 + posiciones.length ) % posiciones.length;
     }
 
     @Override

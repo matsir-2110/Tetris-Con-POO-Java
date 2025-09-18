@@ -11,10 +11,17 @@ public class PieceDogL extends Tetris  {
 
         posiciones = new String [2];
 
-        posiciones[0]= "ooooooooxxoooxxo";
-        posiciones[1]= "oxooxxooxooooooo";
-    
-    }
+        posiciones[0]= 
+            "oooo\n" +
+            "oooo\n" +
+            "xxoo\n" +
+            "oxxo";
+        posiciones[1]=
+            "oxoo\n" +
+            "xxoo\n" +
+            "xooo\n" +
+            "oooo";
+        }
 
         @Override
         public String getPosicionActual() {
