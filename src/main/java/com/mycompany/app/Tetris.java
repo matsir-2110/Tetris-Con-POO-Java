@@ -15,6 +15,7 @@ public abstract class Tetris {
         setNombre(nombreP);
         setFila(0);
         setColumna(4);
+        
     }
 
     public void setForma(String forma){
