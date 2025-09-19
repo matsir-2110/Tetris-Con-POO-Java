@@ -64,13 +64,56 @@ public class PieceDogTest {
              DR.getPosicionActual());
     }
 
-    
 
 
+    @Test
+    public void piezaDogRCaidaLibreTest() {
+        Board board = new Board(); 
+        PieceDogR dogR = new PieceDogR();
 
-    
+        dogR.setFila(0);
+        dogR.setColumna(4);
 
-    
+        int ticks = 0;
+        int ultimaFila = board.getTablero().length - 1;
+
+        
+        while (dogR.getFila() < ultimaFila) {
+            ticks++;
+            if (ticks % 2 == 0) {
+                dogR.bajar();
+            }
+        }
+
+        assertEquals(ultimaFila, dogR.getFila());
+    }
+
+    @Test
+    public void piezaDogLCaidaLibreTest() {
+        Board board = new Board(); 
+        PieceDogL dogL = new PieceDogL();
+
+        dogL.setFila(0);
+        dogL.setColumna(4);
+
+        int ticks = 0;
+        int ultimaFila = board.getTablero().length - 1;
+
+        
+        while (dogL.getFila() < ultimaFila) {
+            ticks++;
+            if (ticks % 2 == 0) {
+                dogL.bajar();
+            }
+        }
+
+        assertEquals(ultimaFila, dogL.getFila());
+    }
+
+
 }
+
+
+
 
 
