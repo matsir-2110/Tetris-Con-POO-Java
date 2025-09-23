@@ -28,7 +28,7 @@ public class PieceSquareTest {
         while (square.getFila() < ultimaFila) {
             ticks++;
             if (ticks % 2 == 0) {
-                square.bajar();
+                square.bajar(board);
             }
         }
 

@@ -26,35 +26,81 @@ public class TetrisTest {
 
     @Test
     public void moverAbajoTest(){
-        PieceActual pdog1 = new PieceActual(new PieceDogL());
+        PieceDogL pdog1 = new PieceDogL();
+        Board tablero = new Board();
 
         assertEquals(0, pdog1.getFila());
-
-        pdog1.moveDown(5);
-        assertEquals(5, pdog1.getFila());
+        
+        pdog1.bajar(tablero);
+        assertEquals(1, pdog1.getFila());
     }
 
     @Test
     public void moverDerechaTest(){
-        PieceActual pdog1 = new PieceActual(new PieceDogL());
+        PieceDogL pdog1 = new PieceDogL();
+        Board tablero = new Board();
 
+        assertEquals(4, pdog1.getColumna());
+
+        pdog1.moverDerecha(tablero);
         assertEquals(5, pdog1.getColumna());
-
-        pdog1.moveRight(3);
-        assertEquals(8, pdog1.getColumna());
     }
 
     @Test
     public void moverIzquierdaTest(){
-        PieceActual pdog1 = new PieceActual(new PieceDogL());
+        PieceDogL pdog1 = new PieceDogL();
+        Board tablero = new Board();
 
-        assertEquals(5, pdog1.getColumna());
+        assertEquals(4, pdog1.getColumna());
 
-        pdog1.moveLeft(2);
+        pdog1.moverIzquierda(tablero);
         assertEquals(3, pdog1.getColumna());
     }
 
+    @Test
+    public void testPiezaNoSaleDelTablero() {
+        Board board = new Board();
+        PieceDogL pDL1 = new PieceDogL();
 
+        // Intentar mover la pieza mucho a la izquierda
+        boolean pudoMover = true;
+        while (pudoMover) {
+            pudoMover = pDL1.moverIzquierda(board);
+        }
+
+        // No puede tener columna negativa
+        assertEquals(true, pDL1.getColumna() >= 0);
+
+        // Intentar mover la pieza mucho a la derecha
+        pudoMover = true;
+        while (pudoMover) {
+            pudoMover = pDL1.moverDerecha(board);
+        }
+
+        // No puede salir del tablero
+        assertEquals(true, pDL1.getColumna() < board.getTablero()[0].length);
+    }
+
+    @Test
+    public void testDosPiezasUnaSobreOtra() {
+        Board board = new Board();
+        PieceDogL pL1 = new PieceDogL();
+        PieceSquare pc1 = new PieceSquare();
+
+        // Baja la primera pieza hasta el fondo
+        while (pL1.bajar(board)) {
+            pL1.dibujarEnTablero(board);
+        }
+
+        // Colocamos la segunda pieza arriba de la primera
+        while (pc1.bajar(board)) {
+            pc1.dibujarEnTablero(board);
+        }
+
+        // El cuadrado debería haber quedado apoyado sobre la L, no atravesarla
+        assertEquals(true, pc1.getFila() < board.getTablero().length - 1);
+        assertEquals(true, pc1.getFila() < pL1.getFila());
+    }
 
 
 

@@ -81,7 +81,7 @@ public class PieceDogTest {
         while (dogR.getFila() < ultimaFila) {
             ticks++;
             if (ticks % 2 == 0) {
-                dogR.bajar();
+                dogR.bajar(board);
             }
         }
 
@@ -103,7 +103,7 @@ public class PieceDogTest {
         while (dogL.getFila() < ultimaFila) {
             ticks++;
             if (ticks % 2 == 0) {
-                dogL.bajar();
+                dogL.bajar(board);
             }
         }
 
