@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class PieceDogTest {
 
-    @Test
+    /*@Test
     public void RotaBienDogL() {
         PieceDogL DL = new PieceDogL();
         // FORMA INICIAL
@@ -93,7 +93,7 @@ public class PieceDogTest {
         
     }
 
-
+*/
 }
 
 

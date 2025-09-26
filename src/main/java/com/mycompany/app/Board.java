@@ -75,4 +75,20 @@ public class Board {
         }
         return cont;
     }
+
+    public void eliminarLineas(){
+        for(int i=0; i<10; i++){
+            int cont = 0;
+            for(int j=0; j<20; j++){
+                if(tablero[i][j] == 'x'){
+                    cont ++;
+                }
+            }
+            if (cont == 20){
+                for(int j=0; j<20; j++){
+                    tablero[i][j] = 'o';
+                }
+            }
+        }        
+    }
 }

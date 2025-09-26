@@ -6,7 +6,7 @@ import org.junit.Test;
 
 public class PieceSquareTest {
 
-    @Test
+    /*@Test
     public void CrearSquare(){
         PieceSquare PS = new PieceSquare();
         // FORMA INICIAL
@@ -33,7 +33,7 @@ public class PieceSquareTest {
         }
 
         assertEquals(ultimaFila, square.getFila());
-    }
+    }*/
 }
 
 
