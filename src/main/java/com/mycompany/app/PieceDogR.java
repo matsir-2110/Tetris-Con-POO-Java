@@ -1,45 +1,16 @@
 package com.mycompany.app;
 
-public class PieceDogR extends Tetris{
-    private final String [] posiciones;
-    private int rotacionActual = 0;
-
-    public PieceDogR(){
-            super("oooo\n" + "oooo\n" + "oxxo\n" + "xxoo", "DogR");
-
-        posiciones = new String [2];
-
-        posiciones[0]= 
-            "oooo\n" +
+public class PieceDogR extends PieceActual {
+    public PieceDogR() {
+        super("DogR", new String[] {
             "oooo\n" +
             "oxxo\n" +
-            "xxoo";
-        posiciones[1]= 
-            "xooo\n" +
             "xxoo\n" +
+            "oooo",
             "oxoo\n" +
-            "oooo";
-        }
-
-    @Override
-    public String getPosicionActual() {
-        return posiciones[rotacionActual];
+            "oxxo\n" +
+            "ooxo\n" +
+            "oooo"
+        });
     }
-
-    @Override
-    public void rotarIzquierda(){
-        rotacionActual = (rotacionActual -1 + posiciones.length) % posiciones.length;
-        
-    }
-
-    @Override
-    public void rotarDerecha(){
-        rotacionActual = (rotacionActual + 1) %posiciones.length;
-       
-    }
-
-    public int getRotacionActual() {
-        return rotacionActual;
-    }
-
 }

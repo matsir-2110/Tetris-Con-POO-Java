@@ -86,7 +86,7 @@ public class TetrisTest {
         Board board = new Board();
         PieceDogL pL1 = new PieceDogL();
         PieceSquare pc1 = new PieceSquare();
-
+        
         // Baja la primera pieza hasta el fondo
         while (pL1.bajar(board)) {
             pL1.dibujarEnTablero(board);
@@ -100,8 +100,13 @@ public class TetrisTest {
         // El cuadrado debería haber quedado apoyado sobre la L, no atravesarla
         assertEquals(true, pc1.getFila() < board.getTablero().length - 1);
         assertEquals(true, pc1.getFila() < pL1.getFila());
+        assertEquals(true, pc1.getFila() + 1 == pL1.getFila());
+       
+
+    
+        
     }
 
-
+ 
 
 }

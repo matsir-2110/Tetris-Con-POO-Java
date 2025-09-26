@@ -1,121 +1,41 @@
 package com.mycompany.app;
 
-public abstract class Tetris {
-    private String forma;
-    private String nombre;
-    private int fila;
-    private int col;
+public class Tetris {
+    private final Board board;
+    private final IClock clock;
+    private PieceActual current;
 
-    public Tetris(String formaInicial, String nombreP){
-        setForma(formaInicial);
-        setNombre(nombreP);
-        setFila(0);
-        setColumna(4); // centro inicial
+    public Tetris() {
+        this.board = new Board(20, 10);
+        this.clock = new Clock();
     }
 
-    public void setForma(String forma){
-        this.forma = forma;
+    public Board getBoard() { return board; }
+    public IClock getClock() { return clock; }
+    public PieceActual getCurrentPiece() { return current; }
+
+    /** Inicia con una pieza activa (general) */
+    public void start(PieceActual firstPiece) {
+        this.current = firstPiece;
+        // si nace colisionando: podrías considerar game over; aquí lo dejamos pasar para tests
     }
 
-    public String getForma() {
-        return forma;
-    }
+    /** Rota a través del controlador (general) */
+    public boolean rotateLeft()  { return current != null && current.tryRotateLeft(board); }
+    public boolean rotateRight() { return current != null && current.tryRotateRight(board); }
 
-    public void setNombre(String nombre){
-        this.nombre = nombre;
-    }
+    /** Avance de juego: cada 2 ticks, la pieza baja 1; si no puede, se fija y termina el ciclo */
+    public void tick() {
+        clock.tick();
+        if (current == null) return;
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public int getFila(){
-        return fila;
-    }
-    public void setFila(int fila){
-        this.fila = fila;
-    }
-
-    public int getColumna(){
-        return col;
-    }
-    public void setColumna(int col){
-        this.col = col;
-    }
-
-    // Baja una fila si no hay colisión
-    public boolean bajar(Board board) {
-        if (!hayColision(board, fila + 1, col)) {
-            fila++;
-            return true;
-        }
-        return false; // no puede bajar más
-    }
-
-    // Movimiento lateral
-    public boolean moverIzquierda(Board board) {
-        if (!hayColision(board, fila, col - 1)) {
-            col--;
-            return true;
-        }
-        return false;
-    }
-    public boolean moverDerecha(Board board) {
-        if (!hayColision(board, fila, col + 1)) {
-            col++;
-            return true;
-        }
-        return false;
-    }
-
-    // Dibuja o borra en tablero
-    private void aplicarEnTablero(Board board, char simbolo) {
-        char[][] tab = board.getTablero();
-        String[] filasPieza = getPosicionActual().split("\n");
-
-        for (int i = 0; i < filasPieza.length; i++) {
-            for (int j = 0; j < filasPieza[i].length(); j++) {
-                if (filasPieza[i].charAt(j) == 'x') {
-                    tab[fila + i][col + j] = simbolo;
-                }
+        if (clock.getTicks() % 2 == 0) {
+            boolean moved = current.tryDown(board);
+            if (!moved) {
+                current.fixOn(board);   // queda sólida en el board
+                current = null;         // listo para que tests seteen otra o aserten estado
+                clock.resetTicks();
             }
         }
     }
-
-    public void dibujarEnTablero(Board board) {
-        aplicarEnTablero(board, 'x');
-    }
-
-    public void borrarDelTablero(Board board) {
-        aplicarEnTablero(board, 'o');
-    }
-
-    // Chequea si habría colisión en la posición indicada
-    public boolean hayColision(Board board, int filaNueva, int colNueva) {
-        char[][] tab = board.getTablero();
-        String[] filasPieza = getPosicionActual().split("\n");
-
-        for (int i = 0; i < filasPieza.length; i++) {
-            for (int j = 0; j < filasPieza[i].length(); j++) {
-                if (filasPieza[i].charAt(j) == 'x') {
-                    int f = filaNueva + i;
-                    int c = colNueva + j;
-
-                    // fuera de límites
-                    if (f < 0 || f >= tab.length ||  c < 0 || c >= tab[0].length) {
-                        return true;
-                    }
-                    // colisión con otra pieza
-                    if (tab[f][c] == 'x') {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    public abstract void rotarIzquierda();
-    public abstract void rotarDerecha();
-    public abstract String getPosicionActual();
 }
