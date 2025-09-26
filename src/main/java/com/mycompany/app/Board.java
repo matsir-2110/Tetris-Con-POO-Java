@@ -31,17 +31,16 @@ public class Board {
         String[] lineas = forma.split("\n");
         for (int i = 0; i < lineas.length; i++) {
             for (int j = 0; j < lineas[i].length(); j++) {
-                if (lineas[i].charAt(j) != 'x'){
-                    continue;
-                }
+            if (lineas[i].charAt(j) == 'x') {
                 int ff = fila + i;
                 int cc = col + j;
-                if (ff < 0 || ff >= rows() || cc < 0 || cc >= cols()){
+                if (ff >= rows() || ff < 0 || cc < 0 || cc >= cols()) {
                     return true;
                 }
-                if (tablero[ff][cc] == 'x'){
+                if (tablero[ff][cc] == 'x') {
                     return true;
                 }
+            }
             }
         }
         return false;

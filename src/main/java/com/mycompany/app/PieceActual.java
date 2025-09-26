@@ -1,11 +1,13 @@
 package com.mycompany.app;
 
-public abstract class PieceActual {
+public abstract class PieceActual implements IRotator {
     private String nombre;
     private String[] posiciones;
     private int rot;
     private int fila;
     private int col;
+    private String[] rotations;
+    private int rotationIndex;
 
     protected PieceActual(String nombre, String[] posiciones) {
         setNombre(nombre);
@@ -13,6 +15,8 @@ public abstract class PieceActual {
         setRot(0);
         setFila(0);
         setColumna(3);
+        this.rotationIndex = 0;
+
     }
 
     public String getNombre(){
@@ -70,7 +74,7 @@ public abstract class PieceActual {
 
     // movimiento seguro
     public boolean tryDown(Board tablero) {
-        if (!tablero.collides(getForma(), fila + 1, col)){
+        if (!tablero.collides(getForma(), fila , col)){
             fila++;
             return true;
         }
@@ -101,5 +105,34 @@ public abstract class PieceActual {
     // caida libre
     public void drop(Board tablero) {
         while(tryDown(tablero));
+    }
+
+    @Override
+    public boolean rotateLeft(Board tablero) {
+        int prev = rotationIndex;
+        rotationIndex = (rotationIndex - 1 + rotations.length) % rotations.length;
+        if (canPlace(tablero)) {
+            return true;
+        } else {
+            rotationIndex = prev; // vuelve atrás si no entra
+            return false;
+        }
+    }
+
+    @Override
+    public boolean rotateRight(Board tablero) {
+        int prev = rotationIndex;
+        rotationIndex = (rotationIndex + 1) % rotations.length;
+        if (canPlace(tablero)) {
+            return true;
+        } else {
+            rotationIndex = prev;
+            return false;
+        }
+    }
+
+    private boolean canPlace(Board tablero) {
+        // acá iría la validación de colisiones
+        return true;
     }
 }

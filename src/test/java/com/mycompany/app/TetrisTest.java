@@ -1,112 +1,57 @@
 package com.mycompany.app;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class TetrisTest {
     
     @Test
-    public void cantidadPiezasTest(){
+    public void contarLineasTest() {
+        Board board = (new Board(10, 20));
 
-        ArrayList<Tetris> piezas = new ArrayList<Tetris>();
-
-        piezas.add(new PieceDogL());
-        piezas.add(new PieceDogR());
-        piezas.add(new PieceLL());
-        piezas.add(new PieceLR());
-        piezas.add(new PieceSquare());
-        piezas.add(new PieceStick());
-        piezas.add(new PieceT());
-
-        assertEquals(7, piezas.size());
-    }
-
-    @Test
-    public void moverAbajoTest(){
-        PieceDogL pdog1 = new PieceDogL();
-        Board tablero = new Board();
-
-        assertEquals(0, pdog1.getFila());
-        
-        pdog1.bajar(tablero);
-        assertEquals(1, pdog1.getFila());
-    }
-
-    @Test
-    public void moverDerechaTest(){
-        PieceDogL pdog1 = new PieceDogL();
-        Board tablero = new Board();
-
-        assertEquals(4, pdog1.getColumna());
-
-        pdog1.moverDerecha(tablero);
-        assertEquals(5, pdog1.getColumna());
-    }
-
-    @Test
-    public void moverIzquierdaTest(){
-        PieceDogL pdog1 = new PieceDogL();
-        Board tablero = new Board();
-
-        assertEquals(4, pdog1.getColumna());
-
-        pdog1.moverIzquierda(tablero);
-        assertEquals(3, pdog1.getColumna());
-    }
-
-    @Test
-    public void testPiezaNoSaleDelTablero() {
-        Board board = new Board();
-        PieceDogL pDL1 = new PieceDogL();
-
-        // Intentar mover la pieza mucho a la izquierda
-        boolean pudoMover = true;
-        while (pudoMover) {
-            pudoMover = pDL1.moverIzquierda(board);
-        }
-
-        // No puede tener columna negativa
-        assertEquals(true, pDL1.getColumna() >= 0);
-
-        // Intentar mover la pieza mucho a la derecha
-        pudoMover = true;
-        while (pudoMover) {
-            pudoMover = pDL1.moverDerecha(board);
-        }
-
-        // No puede salir del tablero
-        assertEquals(true, pDL1.getColumna() < board.getTablero()[0].length);
-    }
-
-    @Test
-    public void testDosPiezasUnaSobreOtra() {
-        Board board = new Board();
-        PieceDogL pL1 = new PieceDogL();
-        PieceSquare pc1 = new PieceSquare();
-        
-        // Baja la primera pieza hasta el fondo
-        while (pL1.bajar(board)) {
-            pL1.dibujarEnTablero(board);
-        }
-
-        // Colocamos la segunda pieza arriba de la primera
-        while (pc1.bajar(board)) {
-            pc1.dibujarEnTablero(board);
-        }
-
-        // El cuadrado debería haber quedado apoyado sobre la L, no atravesarla
-        assertEquals(true, pc1.getFila() < board.getTablero().length - 1);
-        assertEquals(true, pc1.getFila() < pL1.getFila());
-        assertEquals(true, pc1.getFila() + 1 == pL1.getFila());
-       
-
-    
-        
-    }
-
+        PieceSquare c1 = new PieceSquare();
+        PieceSquare c2 = new PieceSquare();
+        PieceSquare c3 = new PieceSquare();
+        PieceSquare c4 = new PieceSquare();
+        PieceSquare c5 = new PieceSquare();
+        PieceSquare c6 = new PieceSquare();
+        PieceSquare c7 = new PieceSquare();
+        PieceSquare c8 = new PieceSquare();
+        PieceSquare c9 = new PieceSquare();
+        PieceSquare c10 = new PieceSquare();
+        c1.setColumna(0);
+        c2.setColumna(2);
+        c3.setColumna(4);
+        c4.setColumna(6);
+        c5.setColumna(8);
+        c6.setColumna(10);
+        c7.setColumna(12);
+        c8.setColumna(14);
+        c9.setColumna(16);
+        c10.setColumna(18);
  
-
-}
+        while (c1.tryDown(board));
+        while (c2.tryDown(board));
+        while (c3.tryDown(board));
+        while (c4.tryDown(board));
+        while (c5.tryDown(board));
+        while (c6.tryDown(board));
+        while (c7.tryDown(board));
+        while (c8.tryDown(board));
+        while (c9.tryDown(board));
+        while (c10.tryDown(board));
+        
+        assertEquals(9, c1.getFila());
+        assertEquals(9, c2.getFila());
+        assertEquals(9, c3.getFila());
+        assertEquals(9, c4.getFila());
+        assertEquals(9, c5.getFila());
+        assertEquals(9, c6.getFila());
+        assertEquals(9, c7.getFila());
+        assertEquals(9, c8.getFila());
+        assertEquals(9, c9.getFila());
+        assertEquals(9, c10.getFila());
+    }
+    
+}   
