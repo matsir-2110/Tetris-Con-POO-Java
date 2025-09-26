@@ -7,6 +7,7 @@ public class PieceDogL extends PieceActual {
             "xxoo\n" +
             "oxxo\n" +
             "oooo",
+            
             "ooxo\n" +
             "oxxo\n" +
             "ooxo\n" +

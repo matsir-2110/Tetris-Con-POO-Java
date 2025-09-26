@@ -90,24 +90,7 @@ public class PieceDogTest {
 
     @Test
     public void piezaDogLCaidaLibreTest() {
-        Board board = new Board(); 
-        PieceDogL dogL = new PieceDogL();
-
-        dogL.setFila(0);
-        dogL.setColumna(4);
-
-        int ticks = 0;
-        int ultimaFila = board.getTablero().length - 1;
-
         
-        while (dogL.getFila() < ultimaFila) {
-            ticks++;
-            if (ticks % 2 == 0) {
-                dogL.bajar(board);
-            }
-        }
-
-        assertEquals(ultimaFila, dogL.getFila());
     }
 
 

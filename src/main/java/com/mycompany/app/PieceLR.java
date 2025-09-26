@@ -7,14 +7,17 @@ public class PieceLR extends PieceActual {
             "ooox\n" +
             "xxxo\n" +
             "oooo",
+
             "oooo\n" +
             "xooo\n" +
             "xooo\n" +
             "xxoo",
+
             "oooo\n" +
             "xxxo\n" +
             "xooo\n" +
             "oooo",
+            
             "oooo\n" +
             "xxoo\n" +
             "ooxo\n" +

@@ -7,14 +7,17 @@ public class PieceT extends PieceActual {
             "oxoo\n" +
             "xxxo\n" +
             "oooo",
+
             "oooo\n" +
             "xooo\n" +
             "xxoo\n" +
             "xooo",
+
             "oooo\n" +
             "xxxo\n" +
             "oxoo\n" +
             "oooo",
+
             "oooo\n" +
             "oxoo\n" +
             "xxoo\n" +

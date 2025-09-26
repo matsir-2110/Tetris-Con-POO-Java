@@ -1,59 +1,105 @@
 package com.mycompany.app;
 
 public abstract class PieceActual {
-    protected final String name;
-    protected final String[] posiciones; // 4 rotaciones (o 1 si no rota)
-    protected int rot;                   // índice de rotación
-    protected int fila;                  // posición actual
-    protected int col;
+    private String nombre;
+    private String[] posiciones;
+    private int rot;
+    private int fila;
+    private int col;
 
-    protected PieceActual(String name, String[] posiciones) {
-        this.name = name;
-        this.posiciones = posiciones;
-        this.rot = 0;
-        this.fila = 0;
-        this.col = 3; // centrado aproximado en un tablero de 10
+    protected PieceActual(String nombre, String[] posiciones) {
+        setNombre(nombre);
+        setPosicion(posiciones);
+        setRot(0);
+        setFila(0);
+        setColumna(3);
     }
 
-    public String getName() { return name; }
-    public String getShape() { return posiciones[rot]; }
-    public int getFila() { return fila; }
-    public int getColumna() { return col; }
-    public void setFila(int f) { this.fila = f; }
-    public void setColumna(int c) { this.col = c; }
+    public String getNombre(){
+        return nombre;
+    }
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
 
-    // --- rotación segura (revierte si colisiona) ---
-    public boolean tryRotateLeft(Board board) {
+    public void setRot(int rot) {
+        this.rot = rot;
+    }
+
+    public void setPosicion(String[] posiciones){
+        this.posiciones = posiciones;
+    }
+
+    public String getForma(){
+        return posiciones[rot];
+    }
+
+    public int getFila(){
+        return fila;
+    }
+    public void setFila(int fila){
+    this.fila = fila;
+    }
+
+    public int getColumna(){
+        return col;
+    }
+    public void setColumna(int col){
+        this.col = col;
+    }
+
+    // revierte si colisiona
+    public boolean tryRotateLeft(Board tablero) {
         int prev = rot;
         rot = (rot - 1 + posiciones.length) % posiciones.length;
-        if (board.collides(getShape(), fila, col)) { rot = prev; return false; }
+        if (tablero.collides(getForma(), fila, col)){
+            rot = prev;
+            return false;
+        }
         return true;
     }
-    public boolean tryRotateRight(Board board) {
+    public boolean tryRotateRight(Board tablero) {
         int prev = rot;
         rot = (rot + 1) % posiciones.length;
-        if (board.collides(getShape(), fila, col)) { rot = prev; return false; }
+        if (tablero.collides(getForma(), fila, col)){
+            rot = prev;
+            return false;
+        }
         return true;
     }
 
-    // --- movimiento seguro ---
-    public boolean tryDown(Board board) {
-        if (!board.collides(getShape(), fila + 1, col)) { fila++; return true; }
-        return false;
-    }
-    public boolean tryLeft(Board board) {
-        if (!board.collides(getShape(), fila, col - 1)) { col--; return true; }
-        return false;
-    }
-    public boolean tryRight(Board board) {
-        if (!board.collides(getShape(), fila, col + 1)) { col++; return true; }
+    // movimiento seguro
+    public boolean tryDown(Board tablero) {
+        if (!tablero.collides(getForma(), fila + 1, col)){
+            fila++;
+            return true;
+        }
         return false;
     }
 
-    // --- fijado / caída libre ---
-    public void fixOn(Board board) { board.fix(getShape(), fila, col); }
+    public boolean tryLeft(Board tablero) {
+        if (!tablero.collides(getForma(), fila, col - 1)){
+            col--;
+            return true;
+        }
+        return false;
+    }
 
-    public void drop(Board board) {
-        while (tryDown(board)) { /* nada */ }
+    public boolean tryRight(Board tablero) {
+        if (!tablero.collides(getForma(), fila, col + 1)){
+            col++; 
+            return true; 
+        }
+        return false;
+    }
+
+    // fijar pieza
+    public void fixOn(Board tablero){
+        tablero.fix(getForma(), fila, col);
+    }
+
+    // caida libre
+    public void drop(Board tablero) {
+        while(tryDown(tablero));
     }
 }

@@ -1,57 +1,79 @@
 package com.mycompany.app;
 
 public class Board {
-    private final char[][] grid;
+    private char[][] tablero;
 
-    public Board() { this(20, 10); }
-
-    public Board(int rows, int cols) {
-        grid = new char[rows][cols];
-        for (int r = 0; r < rows; r++)
-            for (int c = 0; c < cols; c++)
-                grid[r][c] = 'o';
+    public Board(){
+        this(10, 20); 
     }
 
-    public char[][] getTablero() { return grid; }
-    public int rows() { return grid.length; }
-    public int cols() { return grid[0].length; }
+    public Board(int fila, int columna) {
+        tablero = new char[fila][columna];
+        for (int f = 0; f < fila; f++)
+            for (int c = 0; c < columna; c++)
+                tablero[f][c] = 'o';
+    }
 
-    /** ¿Colisionaría la forma en (row,col)? */
-    public boolean collides(String shape, int row, int col) {
-        String[] lines = shape.split("\n");
-        for (int i = 0; i < lines.length; i++) {
-            for (int j = 0; j < lines[i].length(); j++) {
-                if (lines[i].charAt(j) != 'x') continue;
-                int rr = row + i, cc = col + j;
-                if (rr < 0 || rr >= rows() || cc < 0 || cc >= cols()) return true;
-                if (grid[rr][cc] == 'x') return true;
+    public char[][] getTablero(){
+        return tablero;
+    }
+
+    public int rows(){
+        return tablero.length;
+    }
+    
+    public int cols(){
+        return tablero[0].length;
+    }
+
+    // colision
+    public boolean collides(String forma, int fila, int col) {
+        String[] lineas = forma.split("\n");
+        for (int i = 0; i < lineas.length; i++) {
+            for (int j = 0; j < lineas[i].length(); j++) {
+                if (lineas[i].charAt(j) != 'x'){
+                    continue;
+                }
+                int ff = fila + i;
+                int cc = col + j;
+                if (ff < 0 || ff >= rows() || cc < 0 || cc >= cols()){
+                    return true;
+                }
+                if (tablero[ff][cc] == 'x'){
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    /** Fija definitivamente la forma en el tablero (escribe 'x'). */
-    public void fix(String shape, int row, int col) {
-        String[] lines = shape.split("\n");
-        for (int i = 0; i < lines.length; i++) {
-            for (int j = 0; j < lines[i].length(); j++) {
-                if (lines[i].charAt(j) == 'x') {
-                    grid[row + i][col + j] = 'x';
+    // deja la forma en el tablero
+    public void fix(String forma, int fila, int col) {
+        String[] lineas = forma.split("\n");
+        for (int i = 0; i < lineas.length; i++) {
+            for (int j = 0; j < lineas[i].length(); j++) {
+                if (lineas[i].charAt(j) == 'x') {
+                    tablero[fila + i][col + j] = 'x';
                 }
             }
         }
     }
 
-    /** Cuenta filas completas (opcional para tests de líneas). */
+    // cuenta filas completas
     public int lineCount() {
-        int count = 0;
+        int cont = 0;
         for (int r = 0; r < rows(); r++) {
             boolean full = true;
             for (int c = 0; c < cols(); c++) {
-                if (grid[r][c] != 'x') { full = false; break; }
+                if (tablero[r][c] == 'o'){
+                    full = false; 
+                    break;
+                }
             }
-            if (full) count++;
+            if(full == true){
+                cont++;
+            }
         }
-        return count;
+        return cont;
     }
 }

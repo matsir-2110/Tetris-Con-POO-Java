@@ -7,6 +7,7 @@ public class PieceStick extends PieceActual {
             "oxoo\n" +
             "oxoo\n" +
             "oxoo",
+            
             "oooo\n" +
             "oooo\n" +
             "xxxx\n" +
