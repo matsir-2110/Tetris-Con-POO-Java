@@ -10,7 +10,7 @@ public class Tetris {
     private int lineasEliminadas;
     private boolean juegoTerminado;
 
-    public Tetris() {
+    public Tetris(){
         setTablero(new Board(10,20));
         setReloj(new Clock());
         aleatorio = new Random();

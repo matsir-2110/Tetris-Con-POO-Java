@@ -7,7 +7,7 @@ public abstract class PieceBase implements IRotator {
     private int fila;
     private int columna;
 
-    protected PieceBase(String nombre, String[] posiciones) {
+    public PieceBase(String nombre, String[] posiciones) {
         setNombre(nombre);;
         setPosicion(posiciones);
         setRotacion(0);
