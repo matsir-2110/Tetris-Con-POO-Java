@@ -45,7 +45,7 @@ public class PieceDogTest {
 
         dogR.caer(tablero);
 
-        assertEquals(tablero.filas() - 3, dogR.getFila()); // Altura de la pieza es 3 líneas (incluyendo padding)
+        assertEquals(tablero.filas() - 3, dogR.getFila()); 
     }
 
     @Test

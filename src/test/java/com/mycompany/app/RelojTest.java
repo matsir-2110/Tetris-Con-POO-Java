@@ -17,7 +17,7 @@ public class RelojTest {
         assertEquals(0, reloj.getTicks());
     }
 
-    // Test adicional: Múltiples resets
+
     @Test
     public void multipleResetsTest() {
         Clock reloj = new Clock();
