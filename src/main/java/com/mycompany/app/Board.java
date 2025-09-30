@@ -3,8 +3,8 @@ package com.mycompany.app;
 public class Board {
     private char[][] tablero;
 
-    public Board(){
-        this(10,20);
+    public Board() {
+        setTablero(new char[10][20]);
     }
     
 

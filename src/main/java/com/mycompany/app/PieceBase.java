@@ -8,17 +8,27 @@ public abstract class PieceBase implements IRotator {
     private int columna;
 
     protected PieceBase(String nombre, String[] posiciones) {
-        this.nombre = nombre;
-        this.posiciones = posiciones;
-        this.rotacion = 0;
-        this.fila = 0;
-        this.columna = 3; // Spawn en columna central
+        setNombre(nombre);;
+        setPosicion(posiciones);
+        setRotacion(0);
+        setFila(0);
+        setColumna(3);
     }
 
     public String getNombre(){
         return nombre;
     }
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
 
+    public void setPosicion(String[] posiciones){
+        this.posiciones = posiciones;
+    }
+
+    public void setRotacion(int rotacion){
+        this.rotacion = rotacion;
+    }
     public String getForma(){
         return posiciones[rotacion];
     }
