@@ -10,12 +10,12 @@ public class Tetris {
     private int lineasEliminadas;
     private boolean juegoTerminado;
 
-    public Tetris() {
+    public Tetris(){
         setTablero(new Board(10,20));
         setReloj(new Clock());
         aleatorio = new Random();
-        lineasEliminadas = 0;
-        juegoTerminado = false;
+        setLineasEliminadas(0);
+        setJuegoTerminado(false);
     }
 
     public Board getTablero(){
@@ -23,6 +23,14 @@ public class Tetris {
     }
     public void setTablero(Board tablero) {
         this.tablero = tablero;
+    }
+
+    public void setLineasEliminadas(int lineasEliminadas){
+        this.lineasEliminadas = lineasEliminadas;
+    }
+
+    public void setJuegoTerminado(boolean juegoTerminado){
+        this.juegoTerminado = juegoTerminado;
     }
 
     public Clock getReloj(){
