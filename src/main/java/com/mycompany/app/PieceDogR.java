@@ -1,14 +1,14 @@
 package com.mycompany.app;
 
-public class PieceDogL extends PieceBase {
-    public PieceDogL() {
-        super("DogL", new String[] {
+public class PieceDogR extends PieceBase {
+    public PieceDogR() {
+        super("DogR", new String[]{
             "oooo\n" +
-            "xxoo\n" +
             "oxxo\n" +
+            "xxoo\n" +
             "oooo",
             
-            "ooxo\n" +
+            "oxoo\n" +
             "oxxo\n" +
             "ooxo\n" +
             "oooo"

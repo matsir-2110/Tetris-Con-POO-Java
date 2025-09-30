@@ -1,18 +1,17 @@
 package com.mycompany.app;
 
-public class Clock implements IClock {
+public class Clock{
     private int ticks = 0;
 
-    @Override public void tick(){
-        ticks++;}
+    public void tick(){
+        ticks++;
+    }
 
-    @Override public int getTicks(){
+    public int getTicks(){
         return ticks;
     }
     
-    @Override public void resetTicks(){
+    public void resetTicks(){
         ticks = 0;
     }
 }
-
-

@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceT extends PieceActual {
+public class PieceT extends PieceBase {
     public PieceT() {
         super("T", new String[] {
             "oxoo\n" +

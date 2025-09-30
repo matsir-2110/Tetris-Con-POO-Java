@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceLL extends PieceActual {
+public class PieceLL extends PieceBase {
     public PieceLL() {
         super("L", new String[] {
             "oooo\n" +

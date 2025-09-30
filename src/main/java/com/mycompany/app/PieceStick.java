@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceStick extends PieceActual {
+public class PieceStick extends PieceBase {
     public PieceStick() {
         super("Stick", new String[] {
             "x\n" +
@@ -12,4 +12,3 @@ public class PieceStick extends PieceActual {
         });
     }
 }
-

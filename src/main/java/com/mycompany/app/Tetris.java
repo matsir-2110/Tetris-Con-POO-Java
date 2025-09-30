@@ -1,13 +1,21 @@
 package com.mycompany.app;
 
+import java.util.Random;
+
 public class Tetris {
     private Board tablero;
-    private IClock reloj;
-    private PieceActual piezaActual;
+    private Clock reloj;
+    private PieceBase piezaActual;
+    private Random aleatorio;
+    private int lineasEliminadas;
+    private boolean juegoTerminado;
 
     public Tetris() {
         setTablero(new Board(10,20));
         setReloj(new Clock());
+        aleatorio = new Random();
+        lineasEliminadas = 0;
+        juegoTerminado = false;
     }
 
     public Board getTablero(){
@@ -17,35 +25,84 @@ public class Tetris {
         this.tablero = tablero;
     }
 
-    public IClock getReloj(){
+    public Clock getReloj(){
         return reloj;
     }
-    public void setReloj(IClock reloj) {
+    public void setReloj(Clock reloj) {
         this.reloj = reloj;
     }
 
-    public PieceActual getCurrentPiece(){
+    public PieceBase getCurrentPiece(){
         return piezaActual;
     }
 
-    // inicia con una pieza general
-    public void start(PieceActual primeraPieza) {
-        this.piezaActual = primeraPieza;
-        // si spawnea colisionando: game over
+    public boolean isGameOver() {
+        return juegoTerminado;
+    }
+
+    public int getLinesCleared() {
+        return lineasEliminadas;
+    }
+
+    public void addLinesCleared(int eliminadas) {
+        this.lineasEliminadas += eliminadas;
+    }
+
+    // Genera una pieza aleatoria
+    public PieceBase generarPiezaAleatoria() {
+        int indice = aleatorio.nextInt(7);
+        switch (indice) {
+            case 0: 
+                return new PieceDogL();
+            case 1: 
+                return new PieceDogR();
+            case 2: 
+                return new PieceLL();
+            case 3: 
+                return new PieceLR();
+            case 4: 
+                return new PieceSquare();
+            case 5: 
+                return new PieceT();
+            case 6: 
+                return new PieceStick();
+            default: 
+                return new PieceSquare();
+        }
+    }
+
+    // inicia con una pieza (random o dada)
+    public void start(PieceBase primeraPieza) {
+        if (primeraPieza != null) {
+            this.piezaActual = primeraPieza;
+        } else {
+            this.piezaActual = generarPiezaAleatoria();
+        }
+        if (tablero.colisiona(piezaActual.getForma(), piezaActual.getFila(), piezaActual.getColumna())) {
+            juegoTerminado = true;
+        }
     }
 
     // avance, cada 2 ticks la pieza baja
     public void tick() {
-        reloj.tick();
-        if (piezaActual == null){
+        if (juegoTerminado || piezaActual == null) {
             return;
         }
 
+        reloj.tick();
         if (reloj.getTicks() % 2 == 0) {
-            boolean moved = piezaActual.tryDown(tablero);
-            if (!moved){
-                piezaActual.fixOn(tablero);   // queda fijada en el board
-                piezaActual = null;         // listo para setear otra pieza
+            boolean seMovi = piezaActual.intentarBajar(tablero);
+            if (!seMovi) {
+                piezaActual.fijarEn(tablero);
+                int eliminadas = tablero.limpiarLineas();
+                lineasEliminadas += eliminadas;
+                if (lineasEliminadas >= 5) {
+                    juegoTerminado = true;
+                }
+                piezaActual = generarPiezaAleatoria();
+                if (tablero.colisiona(piezaActual.getForma(), piezaActual.getFila(), piezaActual.getColumna())) {
+                    juegoTerminado = true;
+                }
                 reloj.resetTicks();
             }
         }

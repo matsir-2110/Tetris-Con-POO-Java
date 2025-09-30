@@ -1,6 +1,6 @@
 package com.mycompany.app;
 
-public class PieceSquare extends PieceActual {
+public class PieceSquare extends PieceBase {
     public PieceSquare() {
         super("Square", new String[] {
             "xx\n" +
@@ -8,4 +8,3 @@ public class PieceSquare extends PieceActual {
         });
     }
 }
-
