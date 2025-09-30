@@ -209,6 +209,11 @@ public class TetrisTest {
             tetris.tick();
         }
     
+         assertEquals('x', tablero.getTablero()[8][3]);
+         assertEquals('x', tablero.getTablero()[9][3]);
+         assertEquals('x', tablero.getTablero()[6][3]);
+         assertEquals('x', tablero.getTablero()[7][3]);
+
         // el juego debe terminar por apilamiento
         assertTrue(tetris.isGameOver());
         
