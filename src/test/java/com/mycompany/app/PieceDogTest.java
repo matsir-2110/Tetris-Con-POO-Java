@@ -1,102 +1,63 @@
 package com.mycompany.app;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-
-
 
 public class PieceDogTest {
 
-    /*@Test
+    @Test
     public void RotaBienDogL() {
         PieceDogL DL = new PieceDogL();
+        Board tablero = new Board();
+
         // FORMA INICIAL
-        assertEquals(
-            "oooo\n" +
-            "oooo\n" +
-            "xxoo\n" +
-            "oxxo", 
-            DL.getPosicionActual());
+        assertEquals("oooo\nxxoo\noxxo\noooo", DL.getForma());
 
-        DL.rotarDerecha();
-        assertEquals(
-            "oxoo\n" +
-            "xxoo\n" +
-            "xooo\n" +
-            "oooo",
-             DL.getPosicionActual());
+        assertTrue(DL.intentarRotarDerecha(tablero));
+        assertEquals("ooxo\noxxo\nooxo\noooo", DL.getForma());
 
-        DL.rotarIzquierda();
-        assertEquals( 
-            "oooo\n" +
-            "oooo\n" +
-            "xxoo\n" +
-            "oxxo", 
-            DL.getPosicionActual());
-
-       
+        assertTrue(DL.intentarRotarIzquierda(tablero));
+        assertEquals("oooo\nxxoo\noxxo\noooo", DL.getForma());
     }
 
     @Test
     public void RotaBienDogR() {
         PieceDogR DR = new PieceDogR();
+        Board tablero = new Board();
+
         // FORMA INICIAL
-        assertEquals ( 
-            "oooo\n" +
-            "oooo\n" +
-            "oxxo\n" +
-            "xxoo", 
-            DR.getPosicionActual());
-    
-        DR.rotarDerecha();
-        assertEquals(
-            "xooo\n" +
-            "xxoo\n" +
-            "oxoo\n" +
-            "oooo", 
-            DR.getPosicionActual());
+        assertEquals("oooo\noxxo\nxxoo\noooo", DR.getForma());
 
-        DR.rotarIzquierda();
-        assertEquals( 
-            "oooo\n" +
-            "oooo\n" +
-            "oxxo\n" +
-            "xxoo", 
-             DR.getPosicionActual());
+        assertTrue(DR.intentarRotarDerecha(tablero));
+        assertEquals("oxoo\noxxo\nooxo\noooo", DR.getForma());
+
+        assertTrue(DR.intentarRotarIzquierda(tablero));
+        assertEquals("oooo\noxxo\nxxoo\noooo", DR.getForma());
     }
-
-
 
     @Test
     public void piezaDogRCaidaLibreTest() {
-        Board board = new Board(); 
+        Board tablero = new Board(); 
         PieceDogR dogR = new PieceDogR();
 
         dogR.setFila(0);
         dogR.setColumna(4);
 
-        int ticks = 0;
-        int ultimaFila = board.getTablero().length - 1;
+        dogR.caer(tablero);
 
-        
-        while (dogR.getFila() < ultimaFila) {
-            ticks++;
-            if (ticks % 2 == 0) {
-                dogR.bajar(board);
-            }
-        }
-
-        assertEquals(ultimaFila, dogR.getFila());
+        assertEquals(tablero.filas() - 3, dogR.getFila()); // Altura de la pieza es 3 líneas (incluyendo padding)
     }
 
     @Test
     public void piezaDogLCaidaLibreTest() {
-        
+        Board tablero = new Board(); 
+        PieceDogL dogL = new PieceDogL();
+
+        dogL.setFila(0);
+        dogL.setColumna(4);
+
+        dogL.caer(tablero);
+
+        assertEquals(tablero.filas() - 3, dogL.getFila());
     }
-
-*/
 }
-
-
-
-
-

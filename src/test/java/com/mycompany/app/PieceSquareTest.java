@@ -1,42 +1,40 @@
 package com.mycompany.app;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class PieceSquareTest {
 
-    /*@Test
+    @Test
     public void CrearSquare(){
         PieceSquare PS = new PieceSquare();
-        // FORMA INICIAL
-        PS.getPosicionActual();
+        assertEquals("xx\nxx", PS.getForma());
     }
     
-
     @Test
     public void piezaSquareCaidaLibreTest() {
-        Board board = new Board();
-        PieceSquare square = new PieceSquare();
+        Board tablero = new Board();
+        PieceSquare cuadrado = new PieceSquare();
 
-        square.setFila(0);
-        square.setColumna(4);
+        cuadrado.setFila(0);
+        cuadrado.setColumna(4);
 
-        int ticks = 0;
-        int ultimaFila = board.getTablero().length - 1;
+        cuadrado.caer(tablero);
 
-        while (square.getFila() < ultimaFila) {
-            ticks++;
-            if (ticks % 2 == 0) {
-                square.bajar(board);
-            }
-        }
+        assertEquals(tablero.filas() - 2, cuadrado.getFila()); // Altura 2
+    }
 
-        assertEquals(ultimaFila, square.getFila());
-    }*/
+    // Test adicional: Movimiento lateral
+    @Test
+    public void mueveLateralSquare() {
+        Board tablero = new Board();
+        PieceSquare cuadrado = new PieceSquare();
+        cuadrado.setColumna(4);
+
+        assertTrue(cuadrado.intentarIzquierda(tablero));
+        assertEquals(3, cuadrado.getColumna());
+
+        assertTrue(cuadrado.intentarDerecha(tablero));
+        assertEquals(4, cuadrado.getColumna());
+    }
 }
-
-
-
-
-

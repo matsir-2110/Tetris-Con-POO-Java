@@ -1,36 +1,33 @@
 package com.mycompany.app;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class PieceStickTest {
 
-   /*  @Test
-    
+    @Test
     public void RotarBienStick(){
         PieceStick ST = new PieceStick();
+        Board tablero = new Board();
 
         // FORMA INICIAL
-        assertEquals("oxoo\n"+
-                     "oxoo\n"+
-                     "oxoo\n"+
-                     "oxoo", 
-                     ST.getPosicionActual());
+        assertEquals("x\nx\nx\nx", ST.getForma());
 
-        ST.rotarDerecha();
+        assertTrue(ST.intentarRotarDerecha(tablero));
+        assertEquals("xxxx", ST.getForma());
 
-        assertEquals("xxxx\n"+
-                     "oooo\n"+
-                     "oooo\n"+
-                     "oooo", 
-                     ST.getPosicionActual());
+        assertTrue(ST.intentarRotarIzquierda(tablero));
+        assertEquals("x\nx\nx\nx", ST.getForma());
+    }
 
-        ST.rotarIzquierda();
-        assertEquals("oxoo\n"+
-                     "oxoo\n"+
-                     "oxoo\n"+
-                     "oxoo", 
-                     ST.getPosicionActual());
-    } */
+    // Test caída libre
+    @Test
+    public void caidaLibreStickTest() {
+        Board tablero = new Board();
+        PieceStick palo = new PieceStick();
 
-    
+        palo.caer(tablero);
+
+        assertEquals(tablero.filas() - 4, palo.getFila());
+    }
 }
